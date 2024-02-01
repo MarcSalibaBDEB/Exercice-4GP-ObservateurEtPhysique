@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class bouge : MonoBehaviour
 {
-    [SerializeField] float speed = 1;
     [SerializeField] float force = 100;
     Rigidbody rb;
     Vector3 v3;
@@ -19,9 +18,11 @@ public class bouge : MonoBehaviour
     {
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
+    }
+
+    private void FixedUpdate()
+    {
         v3 = new Vector3(h, 0, v);
-        rb.velocity = new Vector3(h * speed, rb.velocity.y, v * speed);
         rb.AddForce(v3 * force * Time.fixedDeltaTime);
-          
     }
 }
